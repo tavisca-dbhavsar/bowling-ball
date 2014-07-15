@@ -8,15 +8,70 @@ namespace Bowling
 {
     public class Game
     {
+       
+        int score;
+        int i;
+        int[] arr = new int[20];
+
         public void Roll(int pins)
         {
-            throw new NotImplementedException();
+            if (pins == 10 && (i % 2) == 0)
+            {
+                arr[i] = pins;
+                i++;
+                arr[i] = 0;
+                i++;
+            }
+            else
+            {
+                arr[i] = pins;
+                i++;
+            }
+
         }
 
         public int GetScore()
         {
-            throw new NotImplementedException();
-        }
+            //for (int j = 0; j < arr.Length; j++)
+            for (int j = 0; j < 20; j++)
+            {
+                if (arr[j] == 10)
+                {
+                    if (j % 2 == 0)
+                    {
+                        if (arr[j + 2] == 10)
+                        {
+                            score =score+arr[j] + arr[j + 2] + arr[j + 4];
 
+                        }
+                        else
+                        {
+                            score =score+arr[j] + arr[j + 2] + arr[j + 3];
+                        } 
+                    }
+
+                }
+                else if ((j % 2 == 0))
+                {
+                  if((arr[j] + arr[j + 1])== 10)
+                     {
+                    
+                        score =score+ arr[j] + arr[j + 1] + arr[j + 2];
+                        j++;
+                     }
+
+                    else
+                    {
+                        score = score + arr[j];
+                    }
+                }
+                else{
+                    score = score + arr[j];
+                }
+                //throw new NotImplementedException();
+            }
+            return score;
+        }
+       
     }
 }
